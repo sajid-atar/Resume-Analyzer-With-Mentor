@@ -95,7 +95,9 @@ NEXTAUTH_SECRET="your-nextauth-secret"
 npx prisma migrate dev
 ```
 
-5. Start the development server:
+### Development
+
+To run the development server:
 
 ```bash
 npm run dev
@@ -104,6 +106,26 @@ yarn dev
 ```
 
 The application will be available at `http://localhost:3000`.
+
+### Building for Production
+
+1. Build the application:
+
+```bash
+npm run build
+# or
+yarn build
+```
+
+2. Start the production server:
+
+```bash
+npm run start
+# or
+yarn start
+```
+
+The production build will be available at the URL specified in your `NEXTAUTH_URL` environment variable.
 
 ## Usage
 
