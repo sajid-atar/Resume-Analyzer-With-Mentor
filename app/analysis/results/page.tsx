@@ -187,7 +187,7 @@ export default function AnalysisResultsPage() {
             >
               <MessageSquare className="h-4 w-4" />
               <span>Chat with Mentor</span>
-            </Button>
+              </Button>
           </div>
         </div>
       </header>

@@ -5,8 +5,26 @@ import { prisma } from "@/lib/prisma"
 import bcrypt from "bcryptjs"
 import { NextAuthOptions } from "next-auth"
 
+// Ensure NEXTAUTH_URL is set for production
+if (!process.env.NEXTAUTH_URL && process.env.NODE_ENV === "production") {
+  throw new Error("NEXTAUTH_URL is not set in production")
+}
+
+// Ensure NEXTAUTH_SECRET is set
 if (!process.env.NEXTAUTH_SECRET) {
   throw new Error("NEXTAUTH_SECRET is not set")
+}
+
+// Extend the built-in session types
+declare module "next-auth" {
+  interface Session {
+    user: {
+      id: string
+      name?: string | null
+      email?: string | null
+      image?: string | null
+    }
+  }
 }
 
 export const authOptions: NextAuthOptions = {
@@ -18,7 +36,6 @@ export const authOptions: NextAuthOptions = {
   },
   pages: {
     signIn: "/auth/login",
-    signUp: "/auth/register",
     error: "/auth/error",
   },
   providers: [
@@ -83,22 +100,38 @@ export const authOptions: NextAuthOptions = {
       return session
     },
     async redirect({ url, baseUrl }) {
+      // Ensure baseUrl is set correctly
+      if (!baseUrl) {
+        baseUrl = process.env.NEXTAUTH_URL || 'http://localhost:3000'
+      }
+
       // After login, always redirect to the landing page
       if (url.startsWith("/auth")) {
         return baseUrl
       }
+
       // Handle relative URLs
       if (url.startsWith("/")) {
-        return `${baseUrl}${url}`
+        return new URL(url, baseUrl).toString()
       }
+
       // Allow redirects to the same origin
-      if (new URL(url).origin === baseUrl) {
-        return url
+      try {
+        const urlObj = new URL(url)
+        const baseUrlObj = new URL(baseUrl)
+        if (urlObj.origin === baseUrlObj.origin) {
+          return url
+        }
+      } catch (error) {
+        console.error('URL parsing error:', error)
+        return baseUrl
       }
+
       // Default to home page
       return baseUrl
     }
   },
+  // Enable debug messages in development only
   debug: process.env.NODE_ENV === "development",
 }
 
