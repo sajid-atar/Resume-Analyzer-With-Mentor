@@ -22,20 +22,16 @@ export function Navbar() {
   const router = useRouter()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
-  // Close mobile menu when route changes
+  // Close menu on route change
   useEffect(() => {
     setIsMobileMenuOpen(false)
   }, [pathname])
 
-  // Prevent body scroll when mobile menu is open
+  // Prevent body scroll when menu open
   useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = 'unset'
-    }
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "unset"
     return () => {
-      document.body.style.overflow = 'unset'
+      document.body.style.overflow = "unset"
     }
   }, [isMobileMenuOpen])
 
@@ -52,9 +48,9 @@ export function Navbar() {
   }
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between">
-        {/* App Logo/Name */}
+    <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4">
+      <div className="container mx-auto flex h-16 items-center justify-between">
+        {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
           <span className="text-xl font-bold text-purple-600">Resume Analyzer</span>
         </Link>
@@ -72,8 +68,8 @@ export function Navbar() {
           )}
         </button>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex md:flex-1 md:items-center md:justify-center md:space-x-6">
+        {/* Desktop Menu */}
+        <div className="hidden md:flex md:items-center md:space-x-8">
           {navItems.map((item) => (
             <Link
               key={item.href}
@@ -128,7 +124,7 @@ export function Navbar() {
               : "opacity-0 invisible pointer-events-none"
           )}
         >
-          <div className="container py-6">
+          <div className="container mx-auto py-6 px-4">
             <div className="flex flex-col space-y-6">
               {navItems.map((item) => (
                 <Link
