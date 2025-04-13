@@ -7,7 +7,7 @@ import { signOut, useSession } from "next-auth/react"
 import { cn } from "@/lib/utils"
 import { toast } from "sonner"
 import { Menu, X } from "lucide-react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -21,6 +21,23 @@ export function Navbar() {
   const { data: session } = useSession()
   const router = useRouter()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsMobileMenuOpen(false)
+  }, [pathname])
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [isMobileMenuOpen])
 
   const handleLogout = async () => {
     try {
@@ -44,7 +61,7 @@ export function Navbar() {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden"
+          className="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -103,27 +120,33 @@ export function Navbar() {
         </div>
 
         {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="absolute left-0 top-16 w-full bg-background md:hidden">
-            <div className="container py-4">
-              <div className="flex flex-col space-y-4">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={cn(
-                      "text-sm font-medium transition-colors hover:text-purple-600",
-                      pathname === item.href
-                        ? "text-purple-600"
-                        : "text-muted-foreground"
-                    )}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+        <div 
+          className={cn(
+            "fixed inset-0 top-16 z-50 bg-background/95 backdrop-blur-sm transition-all duration-300 ease-in-out md:hidden",
+            isMobileMenuOpen 
+              ? "opacity-100 visible" 
+              : "opacity-0 invisible pointer-events-none"
+          )}
+        >
+          <div className="container py-6">
+            <div className="flex flex-col space-y-6">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={cn(
+                    "text-base font-medium transition-colors hover:text-purple-600 py-2",
+                    pathname === item.href
+                      ? "text-purple-600"
+                      : "text-muted-foreground"
+                  )}
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <div className="border-t pt-4">
                 {session ? (
-                  <div className="flex flex-col space-y-2">
+                  <div className="flex flex-col space-y-4">
                     <span className="text-sm text-muted-foreground">
                       Hello, {session.user?.name || session.user?.email}
                     </span>
@@ -133,17 +156,17 @@ export function Navbar() {
                         handleLogout()
                         setIsMobileMenuOpen(false)
                       }}
-                      className="text-red-600 hover:text-red-700 hover:bg-red-50"
+                      className="text-red-600 hover:text-red-700 hover:bg-red-50 w-full"
                     >
                       Logout
                     </Button>
                   </div>
                 ) : (
-                  <div className="flex flex-col space-y-2">
-                    <Link href="/auth/login" onClick={() => setIsMobileMenuOpen(false)}>
+                  <div className="flex flex-col space-y-3">
+                    <Link href="/auth/login">
                       <Button variant="ghost" className="w-full">Sign In</Button>
                     </Link>
-                    <Link href="/auth/register" onClick={() => setIsMobileMenuOpen(false)}>
+                    <Link href="/auth/register">
                       <Button className="w-full bg-purple-600 text-white hover:bg-purple-700">
                         Sign Up
                       </Button>
@@ -153,8 +176,8 @@ export function Navbar() {
               </div>
             </div>
           </div>
-        )}
+        </div>
       </div>
     </nav>
   )
-} 
+}
