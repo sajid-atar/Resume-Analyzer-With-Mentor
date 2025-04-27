@@ -3,28 +3,28 @@ import { Star } from "lucide-react"
 export function Testimonials() {
   const testimonials = [
     {
-      name: "Sarah Johnson",
+      name: "Sarah Khan",
       role: "Software Engineer",
       company: "Tech Solutions Inc.",
-      image: "/placeholder.svg?height=80&width=80",
+      image: "/images/mentors/mentor_one.jpg",
       quote:
         "The resume builder and AI analysis helped me create a standout resume. I received 3 interview calls within a week!",
       stars: 5,
     },
     {
-      name: "Michael Chen",
+      name: "Jessica Sharma",
       role: "Marketing Specialist",
       company: "Global Brands",
-      image: "/placeholder.svg?height=80&width=80",
+      image: "/images/mentors/mentor2.jpg",
       quote:
         "The mentor chat feature was a game-changer. My mentor provided invaluable feedback that helped me land my dream job.",
       stars: 5,
     },
     {
-      name: "Jessica Williams",
+      name: "Rajesh Kumar",
       role: "Project Manager",
       company: "Construction Partners",
-      image: "/placeholder.svg?height=80&width=80",
+      image: "/images/mentors/mentor3.jpg",
       quote:
         "I was skeptical at first, but the detailed feedback and mentor guidance helped me highlight achievements I hadn't considered.",
       stars: 4,

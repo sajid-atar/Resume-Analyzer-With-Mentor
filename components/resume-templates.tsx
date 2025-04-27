@@ -12,25 +12,25 @@ export function ResumeTemplates({
     {
       id: "modern",
       name: "Modern",
-      image: "/placeholder.svg?height=200&width=150",
+      image: "/images/interfaces/modern-template.jpg",
       description: "Clean and professional design with a modern touch.",
     },
     {
       id: "classic",
       name: "Classic",
-      image: "/placeholder.svg?height=200&width=150",
+      image: "/images/interfaces/classic-template.jpg",
       description: "Traditional layout that works well for conservative industries.",
     },
     {
       id: "creative",
       name: "Creative",
-      image: "/placeholder.svg?height=200&width=150",
+      image: "/images/interfaces/creative-template.jpg",
       description: "Bold design for creative professionals and designers.",
     },
     {
       id: "minimal",
       name: "Minimal",
-      image: "/placeholder.svg?height=200&width=150",
+      image: "/images/interfaces/minimal-template.jpg",
       description: "Simple and elegant design with minimal elements.",
     },
     {
@@ -42,7 +42,7 @@ export function ResumeTemplates({
     {
       id: "technical",
       name: "Technical",
-      image: "/placeholder.svg?height=200&width=150",
+      image: "/images/interfaces/technical-template.jpg",
       description: "Optimized for technical roles with skills emphasis.",
     },
   ]

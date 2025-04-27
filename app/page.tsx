@@ -53,7 +53,7 @@ export default function Home() {
               <div className="absolute -bottom-12 -right-12 w-64 h-64 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-full blur-3xl"></div>
               <div className="relative bg-white p-4 rounded-xl shadow-2xl rotate-3 z-10">
                 <img
-                  src="/placeholder.svg?height=500&width=600"
+                  src="/images/Home_page_images/Create_Analyze_&_Perfect_Your_Resume_image.jpg"
                   alt="Resume Builder Interface"
                   className="rounded-lg w-full"
                 />
@@ -193,7 +193,7 @@ export default function Home() {
             <div className="relative">
               <div className="absolute -top-6 -left-6 -right-6 -bottom-6 bg-gradient-to-r from-purple-200 to-indigo-200 rounded-xl -z-10 blur-sm"></div>
               <img
-                src="/placeholder.svg?height=500&width=600"
+                src="/images/Home_page_images/Create_Professional_Resumes_in_Minutes_image.jpg"
                 alt="Resume Builder Interface"
                 className="rounded-xl shadow-lg w-full border-8 border-white"
               />
@@ -209,7 +209,7 @@ export default function Home() {
             <div className="order-2 md:order-1 relative">
               <div className="absolute -top-6 -left-6 -right-6 -bottom-6 bg-gradient-to-r from-indigo-200 to-purple-200 rounded-xl -z-10 blur-sm"></div>
               <img
-                src="/placeholder.svg?height=500&width=600"
+                src="/images/Home_page_images/Get_Detailed_Feedback_image.jpg"
                 alt="AI Analysis Dashboard"
                 className="rounded-xl shadow-lg w-full border-8 border-white"
               />
@@ -283,7 +283,7 @@ export default function Home() {
             <div className="relative">
               <div className="absolute -top-6 -left-6 -right-6 -bottom-6 bg-gradient-to-r from-purple-200 to-indigo-200 rounded-xl -z-10 blur-sm"></div>
               <img
-                src="/placeholder.svg?height=500&width=600"
+                src="/images/Home_page_images/Connect_with_career_mentor_image.jpg"
                 alt="Mentor Chat Interface"
                 className="rounded-xl shadow-lg w-full border-8 border-white"
               />

@@ -7,9 +7,9 @@ export function MentorSuggestions() {
     {
       id: 1,
       mentor: {
-        name: "David Chen",
+        name: "Kunal Shaha",
         role: "Senior Technical Recruiter",
-        avatar: "/placeholder.svg?height=50&width=50",
+        avatar: "/images/mentors/mentor4.jpg",
       },
       suggestion:
         "Your technical skills are impressive, but I'd recommend highlighting more of your collaborative work. Technical recruiters like me look for team players who can communicate effectively with non-technical stakeholders.",
@@ -17,9 +17,9 @@ export function MentorSuggestions() {
     {
       id: 2,
       mentor: {
-        name: "Sarah Williams",
+        name: "Robin Singh",
         role: "Career Coach",
-        avatar: "/placeholder.svg?height=50&width=50",
+        avatar: "/images/mentors/mentor5.jpg",
       },
       suggestion:
         "Consider adding a brief professional summary at the top that captures your unique value proposition. This gives recruiters an immediate sense of who you are and what you bring to the table.",

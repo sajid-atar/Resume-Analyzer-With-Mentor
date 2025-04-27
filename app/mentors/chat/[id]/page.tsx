@@ -12,7 +12,7 @@ export default function MentorChatPage({ params }: { params: { id: string } }) {
     name: mentorId === 1 ? "David Chen" : "Sarah Williams",
     role: mentorId === 1 ? "Senior Technical Recruiter" : "Career Coach",
     company: mentorId === 1 ? "Tech Innovations Inc." : "Career Accelerator",
-    avatar: "/placeholder.svg?height=100&width=100",
+    avatar: "/images/mentors/mentor_one.jpg",
     status: "Online",
   }
 
