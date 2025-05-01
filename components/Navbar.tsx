@@ -118,7 +118,7 @@ export function Navbar() {
         {/* Mobile Menu */}
         <div 
           className={cn(
-            "fixed inset-0 top-16 z-50 bg-background/95 bg-white-500 backdrop-blur-sm transition-all duration-300 ease-in-out md:hidden",
+            "fixed inset-0 top-16 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 transition-all duration-300 ease-in-out md:hidden",
             isMobileMenuOpen 
               ? "opacity-100 visible" 
               : "opacity-0 invisible pointer-events-none"
@@ -131,7 +131,7 @@ export function Navbar() {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "text-base font-medium transition-colors bg-white-500 hover:text-purple-600 py-2",
+                    "text-base font-medium transition-colors hover:text-purple-600 py-2",
                     pathname === item.href
                       ? "text-purple-600"
                       : "text-muted-foreground"
