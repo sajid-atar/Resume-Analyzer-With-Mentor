@@ -117,14 +117,15 @@ export function Navbar() {
 
         {/* Mobile Menu */}
         <div 
-          className={cn(
-  "fixed inset-0 top-16 z-50 bg-white shadow-md transition-all duration-300 ease-in-out md:hidden",
+    <div 
+  className={cn(
+    "fixed inset-0 top-16 z-50 bg-white shadow-md transition-all duration-300 ease-in-out md:hidden",
+    isMobileMenuOpen 
+      ? "opacity-100 visible" 
+      : "opacity-0 invisible pointer-events-none"
+  )}
+>
 
-            isMobileMenuOpen 
-              ? "opacity-100 visible" 
-              : "opacity-0 invisible pointer-events-none"
-          )}
-        >
           <div className="container mx-auto py-6 px-4">
             <div className="flex flex-col space-y-6">
               {navItems.map((item) => (
