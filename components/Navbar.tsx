@@ -48,7 +48,11 @@ export function Navbar() {
   }
 
   return (
+    // <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4">
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4">
+
+ 
+ 
       <div className="container mx-auto flex h-16 items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
@@ -126,7 +130,7 @@ export function Navbar() {
   )}
 >
 
-          <div className="container mx-auto py-6 px-4">
+          <div className="container mx-auto  py-6 px-4">
             <div className="flex flex-col space-y-6">
               {navItems.map((item) => (
                 <Link
