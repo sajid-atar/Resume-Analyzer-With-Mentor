@@ -52,24 +52,24 @@ export function Navbar() {
       <div className="container mx-auto flex h-16 items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
-          <span className="text-xl font-bold text-purple-600">Resume Analyzer</span>
+          <span className="text-lg sm:text-xl font-bold text-purple-600">Resume Analyzer</span>
         </Link>
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
+          className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
         >
           {isMobileMenuOpen ? (
-            <X className="h-6 w-6" />
+            <X className="h-5 w-5 sm:h-6 sm:w-6" />
           ) : (
-            <Menu className="h-6 w-6" />
+            <Menu className="h-5 w-5 sm:h-6 sm:w-6" />
           )}
         </button>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex md:items-center md:space-x-8">
+        <div className="hidden lg:flex lg:items-center lg:space-x-8">
           {navItems.map((item) => (
             <Link
               key={item.href}
@@ -87,10 +87,10 @@ export function Navbar() {
         </div>
 
         {/* Desktop Auth Buttons */}
-        <div className="hidden md:flex md:items-center md:space-x-4">
+        <div className="hidden lg:flex lg:items-center lg:space-x-4">
           {session ? (
             <div className="flex items-center gap-4">
-              <span className="text-sm text-muted-foreground">
+              <span className="text-sm text-muted-foreground hidden xl:inline">
                 Hello, {session.user?.name || session.user?.email}
               </span>
               <Button 
@@ -104,10 +104,10 @@ export function Navbar() {
           ) : (
             <>
               <Link href="/auth/login">
-                <Button variant="ghost">Sign In</Button>
+                <Button variant="ghost" className="whitespace-nowrap">Sign In</Button>
               </Link>
               <Link href="/auth/register">
-                <Button className="bg-purple-600 text-white hover:bg-purple-700">
+                <Button className="bg-purple-600 text-white hover:bg-purple-700 whitespace-nowrap">
                   Sign Up
                 </Button>
               </Link>
@@ -118,7 +118,7 @@ export function Navbar() {
         {/* Mobile Menu */}
         <div 
           className={cn(
-            "fixed inset-0 top-16 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 transition-all duration-300 ease-in-out md:hidden",
+            "fixed inset-0 top-16 z-50 bg-white transition-all duration-300 ease-in-out lg:hidden",
             isMobileMenuOpen 
               ? "opacity-100 visible" 
               : "opacity-0 invisible pointer-events-none"
@@ -159,10 +159,10 @@ export function Navbar() {
                   </div>
                 ) : (
                   <div className="flex flex-col space-y-3">
-                    <Link href="/auth/login">
+                    <Link href="/auth/login" className="w-full">
                       <Button variant="ghost" className="w-full">Sign In</Button>
                     </Link>
-                    <Link href="/auth/register">
+                    <Link href="/auth/register" className="w-full">
                       <Button className="w-full bg-purple-600 text-white hover:bg-purple-700">
                         Sign Up
                       </Button>
